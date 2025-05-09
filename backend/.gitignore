@@ -1,0 +1,20 @@
+# .gitignore
+
+# Wygenerowane foldery
+node_modules/
+
+# Pliki konfiguracyjne edytora (np. VS Code)
+.vscode/
+
+# Pliki środowiskowe (np. z kluczami API)
+.env
+
+# Pliki z logami
+*.log
+
+# Buildy (np. dla Reacta)
+build/
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
