@@ -71,7 +71,7 @@ Skrypt scrapuje produkty z Biedronki w określonych kategoriach i zapisuje je w 
 
 ```js
 { name: "Banany luz", price: 5.99, category: "owoce" }
-```
+  ```
 Kategorie, które są obsługiwane (można je edytować w tablicy categories):
 ```
 [
