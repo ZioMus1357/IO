@@ -18,21 +18,21 @@
 ## 📁 Struktura projektu
 
 IO-main/
-├── backend/ # Backend (Node.js)
-│ ├── server.js # Serwer Express, obsługuje API i MongoDB
-│ ├── models/product.js # Model danych dla produktów
-│ ├── routes/products.js # Routing API: /api/products, /scrape, /api/recipes
-│ └── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki
-├── frontend/ # Frontend (React)
-│ ├── src/ # Komponenty React
-│ │ ├── App.js # Główny komponent aplikacji
-│ │ ├── components/ # Podkomponenty aplikacji
-│ │ │ ├── Filter.js # Komponent filtra kategorii
-│ │ │ ├── ProductList.js # Komponent listy produktów
-│ │ │ └── SelectedProductsPanel.js # Komponent wybranych produktów
-│ └── public/
-│ └── index.html # Główny plik HTML
-└── README.md # Dokumentacja projektu
+── backend/ # Backend (Node.js)
+ ── server.js # Serwer Express, obsługuje API i MongoDB
+ ── models/product.js # Model danych dla produktów
+ ── routes/products.js # Routing API: /api/products, /scrape, /api/recipes
+ ── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki
+── frontend/ # Frontend (React)
+ ── src/ # Komponenty React
+  ── App.js # Główny komponent aplikacji
+  ── components/ # Podkomponenty aplikacji
+   ── Filter.js # Komponent filtra kategorii
+   ── ProductList.js # Komponent listy produktów
+   ── SelectedProductsPanel.js # Komponent wybranych produktów
+ ── public/
+ ── index.html # Główny plik HTML
+── README.md # Dokumentacja projektu
 
 
 ---
@@ -71,15 +71,15 @@ Skrypt scrapuje produkty z Biedronki w określonych kategoriach i zapisuje je w 
 
 ```js
 { name: "Banany luz", price: 5.99, category: "owoce" }
-
+```
 Kategorie, które są obsługiwane (można je edytować w tablicy categories):
-
+```
 [
   "owoce", "warzywa", "piekarnia", "nabial", "mieso", 
   "dania-gotowe", "napoje", "mrozone", "artykuly-spozywcze", 
   "drogeria", "dla-domu", "dla-dzieci", "dla-zwierzat"
 ]
-
+```
 🖥️ Frontend – Opis
 🔧 Technologie Frontendowe
 React.js – do budowy interfejsu użytkownika.
@@ -106,37 +106,38 @@ Po kliknięciu przycisku, wysyła wybrane produkty do backendu i generuje przepi
 
 Filter.js
 Komponent do wyboru kategorii produktów. Umożliwia użytkownikowi filtrowanie produktów według wybranej kategorii:
-
+```
 <select onChange={(e) => setSelectedCategory(e.target.value)}>
   <option value="">Wszystkie kategorie</option>
   {categories.map((category, idx) => (
     <option key={idx} value={category}>{category}</option>
   ))}
 </select>
-
+```
 Komponent wyświetlający wybrane produkty oraz umożliwiający wysłanie ich do backendu w celu generowania przepisów:
-
+```
 <button onClick={handleSend} disabled={selectedProducts.length === 0}>
   🔍 Pokaż przepisy z tych składników
 </button>
-
+```
 Komponent, który wyświetla listę produktów i pozwala użytkownikowi na zaznaczanie/odznaczanie produktów:
+```
 <input
   type="checkbox"
   checked={isSelected}
   onChange={() => toggleProductSelection(product)}
 />
-
+```
 🧑‍🍳 Generowanie przepisów
 Frontend umożliwia generowanie przepisów na podstawie wybranych produktów. Wysyłając listę produktów do API, otrzymujemy tekst z propozycjami przepisów kulinarnych, które są następnie wyświetlane na stronie.
 
 ⚙️ Zmienna środowiskowa (Backend)
 Aplikacja wymaga pliku .env, który powinien zawierać:
-
+```
 MONGODB_URI=your_mongodb_connection_string
 PORT=5000
 GROQ_API_KEY=your_groq_api_key
-
+```
 💡 Użycie aplikacji
 Backend:
 
