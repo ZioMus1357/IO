@@ -18,21 +18,21 @@
 ## 📁 Struktura projektu
 
 IO-main/\
-── backend/ # Backend (Node.js)\
- ── server.js # Serwer Express, obsługuje API i MongoDB\
- ── models/product.js # Model danych dla produktów\
- ── routes/products.js # Routing API: /api/products, /scrape, /api/recipes\
- ── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki\
-── frontend/ # Frontend (React)\
- ── src/ # Komponenty React\
-  ── App.js # Główny komponent aplikacji\
-  ── components/ # Podkomponenty aplikacji\
-   ── Filter.js # Komponent filtra kategorii\
-   ── ProductList.js # Komponent listy produktów\
-   ── SelectedProductsPanel.js # Komponent wybranych produktów\
- ── public/\
- ── index.html # Główny plik HTML\
-── README.md # Dokumentacja projektu\
+*Tabspace*── backend/ # Backend (Node.js)\
+*Tabspace**Tabspace* ── server.js # Serwer Express, obsługuje API i MongoDB\
+*Tabspace**Tabspace* ── models/product.js # Model danych dla produktów\
+*Tabspace**Tabspace* ── routes/products.js # Routing API: /api/products, /scrape, /api/recipes\
+*Tabspace**Tabspace* ── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki\
+*Tabspace*── frontend/ # Frontend (React)\
+*Tabspace**Tabspace* ── src/ # Komponenty React\
+ *Tabspace* *Tabspace* *Tabspace* ── App.js # Główny komponent aplikacji\
+ *Tabspace* *Tabspace* *Tabspace* ── components/ # Podkomponenty aplikacji\
+ *Tabspace* *Tabspace* *Tabspace* *Tabspace* ── Filter.js # Komponent filtra kategorii\
+ *Tabspace*  *Tabspace* *Tabspace* *Tabspace*── ProductList.js # Komponent listy produktów\
+  *Tabspace* *Tabspace* *Tabspace* *Tabspace*── SelectedProductsPanel.js # Komponent wybranych produktów\
+ *Tabspace**Tabspace*── public/\
+ *Tabspace**Tabspace*── index.html # Główny plik HTML\
+*Tabspace*── README.md # Dokumentacja projektu\
 
 
 ---
@@ -157,6 +157,6 @@ Aplikacja pozwala na scrapowanie produktów z Biedronki, zarządzanie nimi i gen
 Użytkownicy mogą filtrować produkty, wybierać je i otrzymywać przepisy na podstawie dostępnych składników.
 
 ## Autorzy:
-**Jolanta Jabłonowska**
-**Dawid Górka**
+**Jolanta Jabłonowska**\
+**Dawid Górka**\
 **Wojciech Gochnio**
