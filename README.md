@@ -104,7 +104,7 @@ Pozwala użytkownikowi wybierać produkty i dodawać je do listy wybranych.
 
 Po kliknięciu przycisku, wysyła wybrane produkty do backendu i generuje przepisy.
 
-**Filter.js**
+**Filter.js**\
 Komponent do wyboru kategorii produktów. Umożliwia użytkownikowi filtrowanie produktów według wybranej kategorii:
 ```
 <select onChange={(e) => setSelectedCategory(e.target.value)}>
@@ -114,12 +114,14 @@ Komponent do wyboru kategorii produktów. Umożliwia użytkownikowi filtrowanie 
   ))}
 </select>
 ```
+**SelectedProductsPanel.js**\
 Komponent wyświetlający wybrane produkty oraz umożliwiający wysłanie ich do backendu w celu generowania przepisów:
 ```
 <button onClick={handleSend} disabled={selectedProducts.length === 0}>
   🔍 Pokaż przepisy z tych składników
 </button>
 ```
+**ProductList.js**\
 Komponent, który wyświetla listę produktów i pozwala użytkownikowi na zaznaczanie/odznaczanie produktów:
 ```
 <input
