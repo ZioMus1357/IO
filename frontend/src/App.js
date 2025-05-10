@@ -7,15 +7,25 @@ import SelectedProductsPanel from "./components/SelectedProductsPanel";
 const App = () => {
   const [products, setProducts] = useState([]);
   const [categories] = useState([
-    "owoce", "warzywa", "piekarnia", "nabial", "mieso", "dania-gotowe",
-    "napoje", "mrozone", "artykuly-spozywcze", "drogeria", "dla-domu",
-    "dla-dzieci", "dla-zwierzat"
+    "owoce",
+    "warzywa",
+    "piekarnia",
+    "nabial",
+    "mieso",
+    "dania-gotowe",
+    "napoje",
+    "mrozone",
+    "artykuly-spozywcze",
+    "drogeria",
+    "dla-domu",
+    "dla-dzieci",
+    "dla-zwierzat",
   ]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [recipes, setRecipes] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showProductList, setShowProductList] = useState(true);
+  const [showProducts, setShowProducts] = useState(true);
   const [showRecipes, setShowRecipes] = useState(true);
 
   useEffect(() => {
@@ -33,14 +43,19 @@ const App = () => {
     }
   };
 
+  const handleRemoveProduct = (id) => {
+    setSelectedProducts((prev) => prev.filter((p) => p._id !== id));
+  };
+
   const handleSendSelected = async () => {
     try {
       setLoading(true);
       setRecipes("");
-      const res = await axios.post("http://localhost:5000/api/recipes", selectedProducts);
-      console.log("✅ Odpowiedź z backendu:", res.data);
+      const res = await axios.post(
+        "http://localhost:5000/api/recipes",
+        selectedProducts
+      );
       setRecipes(res.data.recipes);
-      setShowRecipes(true); // automatycznie pokaż przepisy po otrzymaniu
     } catch (error) {
       console.error("❌ Błąd podczas pobierania przepisów:", error);
       alert("Wystąpił błąd podczas pobierania przepisów.");
@@ -54,21 +69,24 @@ const App = () => {
     : products;
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h1>🛒 Lista Produktów</h1>
+    <div style={{ fontFamily: "Arial", padding: "2rem", backgroundColor: "#f4f6f8", minHeight: "100vh" }}>
+      <h1 style={{ textAlign: "center", color: "#2c3e50" }}>🛒 Lista Produktów</h1>
 
       <Filter categories={categories} setSelectedCategory={setSelectedCategory} />
 
       <SelectedProductsPanel
         selectedProducts={selectedProducts}
         handleSend={handleSendSelected}
+        onRemove={handleRemoveProduct}
       />
 
-      <button onClick={() => setShowProductList(!showProductList)} style={{ marginBottom: "1rem" }}>
-        {showProductList ? "⬆️ Ukryj listę produktów" : "⬇️ Pokaż listę produktów"}
-      </button>
+      <div style={{ margin: "1rem 0" }}>
+        <button onClick={() => setShowProducts(!showProducts)} style={{ padding: "0.5rem", marginBottom: "1rem" }}>
+          {showProducts ? "🔽 Ukryj listę produktów" : "🔼 Pokaż listę produktów"}
+        </button>
+      </div>
 
-      {showProductList && (
+      {showProducts && (
         <ProductList
           products={filteredProducts}
           selectedProducts={selectedProducts}
@@ -78,20 +96,18 @@ const App = () => {
 
       {loading && <p>⏳ Ładowanie przepisów...</p>}
 
-      {recipes && (
-        <>
-          <button onClick={() => setShowRecipes(!showRecipes)} style={{ marginTop: "2rem" }}>
-            {showRecipes ? "⬆️ Ukryj przepisy" : "⬇️ Pokaż przepisy"}
-          </button>
+      <div style={{ marginTop: "2rem" }}>
+        <button onClick={() => setShowRecipes(!showRecipes)} style={{ padding: "0.5rem", marginBottom: "1rem" }}>
+          {showRecipes ? "🔽 Ukryj przepisy" : "🔼 Pokaż przepisy"}
+        </button>
 
-          {showRecipes && (
-            <div style={{ marginTop: "1rem", whiteSpace: "pre-wrap", border: "1px solid #ccc", padding: "1rem", background: "#f0f0f0" }}>
-              <h2>🍽️ Propozycje przepisów:</h2>
-              <p>{recipes}</p>
-            </div>
-          )}
-        </>
-      )}
+        {showRecipes && recipes && (
+          <div style={{ background: "#fff", padding: "1rem", borderRadius: "8px", boxShadow: "0 0 8px rgba(0,0,0,0.1)", whiteSpace: "pre-wrap" }}>
+            <h2>🍽️ Propozycje przepisów:</h2>
+            <p>{recipes}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

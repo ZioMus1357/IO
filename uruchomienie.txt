@@ -1,0 +1,4 @@
+jak uruchomic projekt:
+1. baza dancyh: mongod
+2. server node: node server.js
+3. react: npm start

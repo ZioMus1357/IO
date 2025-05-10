@@ -33,7 +33,7 @@ mongoose
 const BASE_URL = "https://zakupy.biedronka.pl/";
 const categories = [
   "owoce", "warzywa", "piekarnia", "nabial", "mieso", "dania-gotowe",
-  //"napoje", "mrozone", "artykuly-spozywcze", "drogeria", "dla-domu",
+  "napoje", "mrozone", "artykuly-spozywcze", "drogeria", "dla-domu",
   "dla-dzieci", "dla-zwierzat"
 ];
 
