@@ -26,8 +26,8 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ Połączono z MongoDB"))
-  .catch((err) => console.error("❌ Błąd MongoDB:", err));
+  .then(() => console.log(" Połączono z MongoDB"))
+  .catch((err) => console.error(" Błąd MongoDB:", err));
 
 // Scraping
 const BASE_URL = "https://zakupy.biedronka.pl/";
@@ -44,7 +44,7 @@ async function scrapeCategory(category) {
 
   while (true) {
     const url = `${BASE_URL}${category}/?page=${page}`;
-    console.log(`🔎 Pobieranie: ${url}`);
+    console.log(` Pobieranie: ${url}`);
 
     try {
       const response = await axios.get(url, {
@@ -55,7 +55,7 @@ async function scrapeCategory(category) {
       const productElements = $(".product-tile");
 
       if (productElements.length === 0) {
-        console.log(`❌ Brak produktów na stronie ${page}, kończę kategorię "${category}"`);
+        console.log(` Brak produktów na stronie ${page}, kończę kategorię "${category}"`);
         break;
       }
 
@@ -79,16 +79,16 @@ async function scrapeCategory(category) {
       );
 
       if (duplicateFound) {
-        console.log(`🚨 Duplikaty – koniec kategorii "${category}"`);
+        console.log(` Strona ${page} zawiera te same produkty, kończę kategorię "${category}"`);
         break;
       }
 
       products.push(...currentPageProducts);
       lastPageProducts = currentPageProducts;
-      console.log(`✅ Strona ${page}: ${currentPageProducts.length} produktów`);
+      console.log(` Strona ${page} – znaleziono ${currentPageProducts.length} nowych produktów`);
       page++;
     } catch (error) {
-      console.error(`❗ Błąd pobierania ${category}, strona ${page}:`, error.message);
+      console.error(` Błąd podczas pobierania ${category} strona ${page}:`, error.message);
       break;
     }
   }
@@ -100,7 +100,7 @@ async function scrapeAllAndSave() {
   const allProducts = [];
 
   for (const category of categories) {
-    console.log(`📦 Kategoria: ${category}`);
+    console.log(` Kategoria: ${category}`);
     const products = await scrapeCategory(category);
     allProducts.push(...products);
   }
@@ -108,9 +108,9 @@ async function scrapeAllAndSave() {
   try {
     await Product.deleteMany({});
     await Product.insertMany(allProducts);
-    console.log(`💾 Zapisano ${allProducts.length} produktów do bazy`);
+    console.log(` Zapisano ${allProducts.length} produktów do bazy`);
   } catch (err) {
-    console.error("❌ Błąd zapisu do MongoDB:", err.message);
+    console.error(" Błąd zapisu do MongoDB:", err.message);
   }
 }
 
@@ -142,15 +142,15 @@ app.post("/api/recipes", async (req, res) => {
     });
 
     const recipeText = completion.choices[0].message.content;
-    console.log("📩 Odpowiedź Groq:", recipeText);
+    console.log(" Odpowiedź Groq:", recipeText);
     res.json({ recipes: recipeText });
   } catch (error) {
-    console.error("❌ Błąd OpenAI:", error.message);
+    console.error(" Błąd OpenAI:", error.message);
     res.status(500).json({ error: "Błąd przy generowaniu przepisów." });
   }
 });
 
 // Start serwera
 app.listen(PORT, () => {
-  console.log(`🚀 Serwer działa na http://localhost:${PORT}`);
+  console.log(` Serwer działa na http://localhost:${PORT}`);
 });

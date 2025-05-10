@@ -29,7 +29,7 @@ router.post('/scrape', async (req, res) => {
 
 app.post("/api/selected-products", async (req, res) => {
   const selected = req.body;
-  console.log("📥 Otrzymano produkty:", selected);
+  console.log(" Otrzymano produkty:", selected);
   res.status(200).json({ message: "Produkty otrzymane" });
 });
 

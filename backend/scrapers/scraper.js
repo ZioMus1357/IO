@@ -25,7 +25,7 @@ async function scrapeCategory(category) {
 
   while (true) {
     const url = `${BASE_URL}${category}/?page=${page}`;
-    console.log(`🔎 Pobieranie: ${url}`);
+    console.log(` Pobieranie: ${url}`);
 
     try {
       const response = await axios.get(url, {
@@ -37,7 +37,7 @@ async function scrapeCategory(category) {
 
       // Sprawdzamy, czy na stronie są produkty
       if (productElements.length === 0) {
-        console.log(`❌ Brak produktów na stronie ${page}, kończę kategorię "${category}"`);
+        console.log(` Brak produktów na stronie ${page}, kończę kategorię "${category}"`);
         break;
       }
 
@@ -71,19 +71,19 @@ async function scrapeCategory(category) {
       );
 
       if (duplicateFound) {
-        console.log(`🚨 Strona ${page} zawiera te same produkty, kończę kategorię "${category}"`);
+        console.log(` Strona ${page} zawiera te same produkty, kończę kategorię "${category}"`);
         break;
       }
 
       // Dodajemy nowe produkty do ogólnej listy
       products.push(...currentPageProducts);
 
-      console.log(`✅ Strona ${page} – znaleziono ${currentPageProducts.length} nowych produktów`);
+      console.log(` Strona ${page} – znaleziono ${currentPageProducts.length} nowych produktów`);
       lastPageProducts = currentPageProducts;
 
       page++;
     } catch (error) {
-      console.error(`❗ Błąd podczas pobierania ${category} strona ${page}:`, error.message);
+      console.error(` Błąd podczas pobierania ${category} strona ${page}:`, error.message);
       break;
     }
   }
@@ -95,9 +95,9 @@ async function scrapeAll() {
   const allProducts = [];
 
   for (const category of categories) {
-    console.log(`\n📦 Kategoria: ${category}`);
+    console.log(`\n Kategoria: ${category}`);
     const products = await scrapeCategory(category);
-    console.log(`📊 Łącznie w kategorii "${category}": ${products.length} produktów`);
+    console.log(` Łącznie w kategorii "${category}": ${products.length} produktów`);
     allProducts.push(...products);
   }
 
