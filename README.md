@@ -20,19 +20,19 @@
 IO-main/\
 &emsp;── backend/ # Backend (Node.js)\
 &emsp;&emsp; ── server.js # Serwer Express, obsługuje API i MongoDB\
-*Tabspace**Tabspace* ── models/product.js # Model danych dla produktów\
-*Tabspace**Tabspace* ── routes/products.js # Routing API: /api/products, /scrape, /api/recipes\
-*Tabspace**Tabspace* ── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki\
-*Tabspace*── frontend/ # Frontend (React)\
-*Tabspace**Tabspace* ── src/ # Komponenty React\
- *Tabspace* *Tabspace* *Tabspace* ── App.js # Główny komponent aplikacji\
- *Tabspace* *Tabspace* *Tabspace* ── components/ # Podkomponenty aplikacji\
- *Tabspace* *Tabspace* *Tabspace* *Tabspace* ── Filter.js # Komponent filtra kategorii\
- *Tabspace*  *Tabspace* *Tabspace* *Tabspace*── ProductList.js # Komponent listy produktów\
-  *Tabspace* *Tabspace* *Tabspace* *Tabspace*── SelectedProductsPanel.js # Komponent wybranych produktów\
- *Tabspace**Tabspace*── public/\
- *Tabspace**Tabspace*── index.html # Główny plik HTML\
-*Tabspace*── README.md # Dokumentacja projektu\
+&emsp;&emsp; ── models/product.js # Model danych dla produktów\
+&emsp;&emsp; ── routes/products.js # Routing API: /api/products, /scrape, /api/recipes\
+&emsp;&emsp; ── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki\
+&emsp;── frontend/ # Frontend (React)\
+&emsp;&emsp; ── src/ # Komponenty React\
+ &emsp;&emsp;&emsp; ── App.js # Główny komponent aplikacji\
+ &emsp;&emsp;&emsp; ── components/ # Podkomponenty aplikacji\
+ &emsp;&emsp;&emsp;&emsp; ── Filter.js # Komponent filtra kategorii\
+ &emsp;&emsp;&emsp;&emsp;── ProductList.js # Komponent listy produktów\
+  &emsp;&emsp;&emsp;&emsp;── SelectedProductsPanel.js # Komponent wybranych produktów\
+ &emsp;&emsp;── public/\
+ &emsp;&emsp;── index.html # Główny plik HTML\
+&emsp;── README.md # Dokumentacja projektu\
 
 
 ---
