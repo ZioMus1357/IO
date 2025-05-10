@@ -1,4 +1,4 @@
-# IO-main – Dokumentacja projektu
+# IO – Dokumentacja projektu
 
 ## 🛠 Technologie
 - **Backend**:
