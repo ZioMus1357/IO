@@ -18,8 +18,8 @@
 ## 📁 Struktura projektu
 
 IO-main/\
-*Tabspace*── backend/ # Backend (Node.js)\
-*Tabspace**Tabspace* ── server.js # Serwer Express, obsługuje API i MongoDB\
+&emsp;── backend/ # Backend (Node.js)\
+&emsp;&emsp; ── server.js # Serwer Express, obsługuje API i MongoDB\
 *Tabspace**Tabspace* ── models/product.js # Model danych dla produktów\
 *Tabspace**Tabspace* ── routes/products.js # Routing API: /api/products, /scrape, /api/recipes\
 *Tabspace**Tabspace* ── scrapers/scraper.js # Skrypt scrapujący produkty z Biedronki\
